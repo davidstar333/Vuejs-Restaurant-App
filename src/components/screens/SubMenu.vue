@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container bounceInRight animated">
         <v-progress-linear
         color="#50E3C2"
         height="5"
