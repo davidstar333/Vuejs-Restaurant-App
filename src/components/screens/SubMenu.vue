@@ -75,7 +75,7 @@
                 <v-flex xs4>
                     <div class="qty">
                         <div class="value-button" id="decrease" @click="qty_change('minus')" value="Decrease Value">-</div>
-                        <input type="number" id="number" :value="[qty_value]" />
+                        <input type="number" id="number" min="1" :value="[qty_value]" />
                         <div class="value-button" id="increase" @click="qty_change('plus')" value="Increase Value">+</div>
                     </div>
                 </v-flex>
