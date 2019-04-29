@@ -349,7 +349,7 @@ export default {
         display: inline-block;
         border: 1px solid #ddd;
         margin: 0px;
-        width: 40px;
+        width: 38px;
         height: 36px;
         text-align: center;
         vertical-align: middle;
@@ -389,14 +389,14 @@ export default {
         border-bottom: 1px solid #ddd;
         background-color: #eee;
         margin: 0px;
-        width: 40px;
+        width: 38px;
         height: 36px;
         color: #000;
         font-size: 1.2rem;
         position: relative;
         z-index: 2;
     }
-    
+
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
         -webkit-appearance: none;
