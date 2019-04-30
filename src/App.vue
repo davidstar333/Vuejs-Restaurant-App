@@ -232,4 +232,10 @@ button.success {
         border-top: 1px solid #ccc;
     }
 }
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
 </style>

@@ -90,25 +90,37 @@
              <div class="dropdown-item">
                 <div class="item-title"><b>Chicken</b></div>
                 <div class="item-price">+ $0.00</div>
-                <v-checkbox v-model="checkbox1"></v-checkbox>
+                <div class="round pull-right">
+                    <input type="checkbox" value="Chinken,+ $0.00" id="chicken" />
+                    <label for="chicken"></label>
+                </div>
              </div>
              <v-divider></v-divider>
              <div class="dropdown-item">
                 <div class="item-title"><b>Al Pastor</b></div>
                 <div class="item-price">+ $0.00</div>
-                <v-checkbox v-model="checkbox2"></v-checkbox>
+                <div class="round pull-right">
+                    <input type="checkbox" value="Al Pastor,+ $0.00" id="pastor" />
+                    <label for="pastor"></label>
+                </div>
              </div>
              <v-divider></v-divider>
              <div class="dropdown-item">
                 <div class="item-title"><b>Steak</b></div>
                 <div class="item-price">+ $0.00</div>
-                <v-checkbox v-model="checkbox3"></v-checkbox>
+                <div class="round pull-right">
+                    <input type="checkbox" value="Steak,+ $0.00" id="steak" />
+                    <label for="steak"></label>
+                </div>
              </div>
              <v-divider></v-divider>
              <div class="dropdown-item">
                 <div class="item-title"><b>Shrimp</b></div>
                 <div class="item-price">+ $0.00</div>
-                <v-checkbox v-model="checkbox4"></v-checkbox>
+                <div class="round pull-right">
+                    <input type="checkbox" value="Shrimp,+ $0.00" id="shrimp" />
+                    <label for="shrimp"></label>
+                </div>
              </div>
             <div class="dropdown-action">
                 <v-btn round color="default" id="vegan" dark>
@@ -303,6 +315,53 @@ export default {
         background-color: #fff;
         width: 375px;
         border-top: 1px solid #ccc;
+    }
+    #choose-protein>p {
+        font-size: 15px;
+    }
+    .round {
+        position: relative;
+        margin-top: -32px;
+        margin-right: 20px;
+    }
+
+    .round label {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+        height: 23px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 23px;
+    }
+
+    .round label:after {
+        border: 2px solid #fff;
+        border-top: none;
+        border-right: none;
+        content: "";
+        height: 6px;
+        left: 6px;
+        opacity: 0;
+        position: absolute;
+        top: 6px;
+        transform: rotate(-45deg);
+        width: 10px;
+    }
+
+    .round input[type="checkbox"] {
+        visibility: hidden;
+    }
+
+    .round input[type="checkbox"]:checked + label {
+        background-color: #212121;
+        border-color: #212121;
+    }
+
+    .round input[type="checkbox"]:checked + label:after {
+    opacity: 1;
     }
     .dropdown-menu {
         padding: 10px;
