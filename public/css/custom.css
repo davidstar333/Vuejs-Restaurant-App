@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: CircularStd-Bold;
-  src: url('../fonts/CircularStd-Bold.otf');
+  src: url('./fonts/CircularStd-Bold');
 }
 
 @font-face {

@@ -22,7 +22,7 @@
             </p>
         </div>
         <div class="action">
-            <v-btn round color="success" dark>
+            <v-btn round color="success" id="vegan" dark>
                 <svg height="18px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="18px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M423.4,358c-43.8-6.7-47.1-13.1-47.1-13.1c9-54.1-18.9-122.6-64.6-159.7c-60.7-49.3-153.1-13.5-225-88.5   c-16.8-17.5-7,196.3,83,277.3c65.8,59.2,143.3,41,164.6,31.3c19.3-8.8,32.8-24.9,32.8-24.9c35.1,10.8,52.5,10.2,52.5,10.2   C431.9,392.1,438.1,360.2,423.4,358z M343.2,361.6c-115.3-34.1-202-153.8-202-153.8s76.1,89.8,210.2,133.5   C351.6,348.1,347.6,357.8,343.2,361.6z"/></g></svg>
                 vegan
             </v-btn>
@@ -32,14 +32,12 @@
             </v-btn>
         </div>
         <v-divider></v-divider>
-        <div class="drop-down">
+        <div class="drop-down" @click="openMenu">
             <span>Choose Protein</span>
-            <select name="" id="">
-                <option value="">Chicken (+$0.00)</option>
-                <option value="">Al Pastor (+$0.00)</option>
-                <option value="">Steak (+$1.99)</option>
-                <option value="">Shrimp (+$1.99)</option>
-            </select>
+            <div>
+                Al Pastor(+ $0.00)
+            </div>
+            <span class="chevron right"></span>
         </div>
         <v-divider></v-divider>
         <div class="reviews-box">
@@ -87,6 +85,38 @@
                 </v-flex>
             </v-layout>
         </div>
+        <div class="dropdown-menu hide" id="choose-protein">
+             <p class="text-center"><strong>Choose Protein</strong></p>
+             <div class="dropdown-item">
+                <div class="item-title"><b>Chicken</b></div>
+                <div class="item-price">+ $0.00</div>
+                <v-checkbox v-model="checkbox1"></v-checkbox>
+             </div>
+             <v-divider></v-divider>
+             <div class="dropdown-item">
+                <div class="item-title"><b>Al Pastor</b></div>
+                <div class="item-price">+ $0.00</div>
+                <v-checkbox v-model="checkbox2"></v-checkbox>
+             </div>
+             <v-divider></v-divider>
+             <div class="dropdown-item">
+                <div class="item-title"><b>Steak</b></div>
+                <div class="item-price">+ $0.00</div>
+                <v-checkbox v-model="checkbox3"></v-checkbox>
+             </div>
+             <v-divider></v-divider>
+             <div class="dropdown-item">
+                <div class="item-title"><b>Shrimp</b></div>
+                <div class="item-price">+ $0.00</div>
+                <v-checkbox v-model="checkbox4"></v-checkbox>
+             </div>
+            <div class="dropdown-action">
+                <v-btn round color="default" id="vegan" dark>
+                    continue
+                </v-btn>
+            </div>
+        </div>
+        <div class="cover hide" @click="hideMenu"></div>
     </div>
 </template>
 
@@ -101,7 +131,7 @@ export default {
         FanTip
     },
     mounted: function() {
-        
+
     },
     data () {
         return {
@@ -228,7 +258,18 @@ export default {
             qty_value: 1
         }
     },
+    created: function() {
+        
+    },
     methods: {
+        openMenu() {
+            $("#choose-protein").slideToggle('fast');
+            $(".cover").show();
+        },
+        hideMenu() {
+            $("#choose-protein").slideToggle('fast');
+            $(".cover").hide();
+        },
         showAllMostPopular: function (value) {
             if( value == "reviews" ) {
                 this.isShowAllMostPopular.reviews = !this.isShowAllMostPopular.reviews
@@ -255,6 +296,32 @@ export default {
 </script>
 
 <style>
+    #choose-protein {
+        position: fixed;
+        bottom: 0;
+        z-index: 30;
+        background-color: #fff;
+        width: 375px;
+        border-top: 1px solid #ccc;
+    }
+    .dropdown-menu {
+        padding: 10px;
+    }
+    .dropdown-menu .dropdown-item {
+        position: relative;
+        padding: 5px 0;
+    }
+    .dropdown-menu .v-input--checkbox {
+        position: absolute;
+        right: 0;
+        top: -10px;
+    }
+    .dropdown-action button {
+        width: 96%;
+    }
+    .text-center {
+        text-align: center;
+    }
     .v-progress-linear {
         margin: 0px;
     }
@@ -264,14 +331,18 @@ export default {
     .title-section {
         margin-top: 20px;
     }
-    .product-price {
-        font-family: "CircularStd-Medium";
-        font-size: 18px;
+    .title-section .product-title {
+        font-family: 'CircularStd-Bold';
+    }
+    span.product-price {
+        font-family: "CircularStd-Bold";
+        font-size: 15px;
         color: #50e3c2;
         font-weight: bold;
     }
     .product-des {
-        font-size: 16px;
+        font-family: 'CircularStd-Book';
+        font-size: 14px;
         margin: 10px;
         color: #333;
     }
@@ -285,9 +356,21 @@ export default {
     .action button {
         text-transform: lowercase;
         height: 25px;
+        font-weight: 300;
+        font-size: 12px;
+        padding: 0;
+    }
+    .action button .v-btn__content {
+        padding: 0;
+        margin: 0;
     }
     .action button .v-icon {
         font-size: 1rem;
+    }
+    .action button#vegan {
+        min-width: auto;
+        padding: 0 10px 0 7px;
+        margin-right: 0;
     }
     .action svg {
         fill: #fff;
@@ -309,15 +392,30 @@ export default {
         color: #fff !important;
     }
     .drop-down {
-        padding: 10px;
+        font-size: 14px;
+        padding: 5px 10px;
+        font-family: 'CircularStd-Book';
+        position: relative;
     }
+    .drop-down .chevron {
+        position: absolute;
+        right: 15px;
+        top: 20px;
+        font-size: 25px;
+    }
+    /* div.drop-down:after {
+        content: '\003e';
+        position: absolute;
+        right: 10px;;
+        top: 20px;
+    } */
     .drop-down span {
         font-weight: bold;
     }
     .drop-down select {
         width: 100%;
         height: 30px;
-        padding: 5px;
+        padding: 0;
     }
     .reviews-box {
         margin-right: 8px;
@@ -413,5 +511,33 @@ export default {
     }
     #decrease {
         border-right: none;
+    }
+    .chevron::before {
+        border-style: solid;
+        border-width: 0.05em 0.05em 0 0;
+        content: '';
+        display: inline-block;
+        height: 0.45em;
+        left: 0.15em;
+        position: relative;
+        top: 0.15em;
+        transform: rotate(-45deg);
+        vertical-align: top;
+        width: 0.45em;
+        border-color: #333;
+    }
+    .chevron.right:before {
+        left: 0;
+        transform: rotate(45deg);
+    }
+
+    .chevron.bottom:before {
+        top: 0;
+        transform: rotate(135deg);
+    }
+
+    .chevron.left:before {
+        left: 0.25em;
+        transform: rotate(-135deg);
     }
 </style>

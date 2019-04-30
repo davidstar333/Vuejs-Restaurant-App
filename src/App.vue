@@ -23,6 +23,17 @@ export default {
     } */
 
 /*base code*/
+.hide {
+  display: none;
+}
+.cover {
+    position: absolute;
+    top: 0;
+    background: rgba(0,0,0,0.5);
+    width: 375px;
+    height: 100vh;
+    z-index: 10;
+}
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -181,7 +192,9 @@ export default {
     padding: 0px;
 }
 h2 {
-    font-size: 1.4rem;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: 'CircularStd-Bold';
 }
 button.success {
     background-color: #50e3c2 !important;
@@ -201,6 +214,22 @@ button.success {
         width: 100%;
         position: fixed;
         bottom: 0;
+    }
+    .cover {
+        position: absolute;
+        top: 0;
+        background: rgba(0,0,0,0.5);
+        width: 100%;
+        height: 100vh;
+        z-index: 10;
+    }
+    #choose-protein {
+        position: fixed;
+        bottom: 0;
+        z-index: 30;
+        background-color: #fff;
+        width: 100%;
+        border-top: 1px solid #ccc;
     }
 }
 </style>

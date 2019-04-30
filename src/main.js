@@ -2,6 +2,7 @@ import Vue from 'vue'
 import './plugins/vuetify'
 import App from './App.vue'
 import VueRouter from 'vue-router';
+import 'expose-loader?$!expose-loader?jQuery!jquery'
 
 Vue.use(VueRouter);
 
